@@ -5,14 +5,17 @@ title: "Custom facts walkthrough"
 
 [Facter 3.0.2 release notes]: ../3.0/release_notes.html#facter--p-restored
 [Plugins in Modules]: /puppet/latest/plugins_in_modules.html
+[Adding plug-ins to a module]: https://puppet.com/docs/puppet/5.5/plugins_in_modules.html#adding-plug-ins-to-a-module
 
 You can add custom facts by writing snippets of Ruby code on the Puppet master. Puppet then uses [Plugins in Modules][] to distribute the facts to the client.
+
+For information on how to add custom facts to modules, see [Adding plug-ins to a module][].
 
 ## Adding custom facts to Facter
 
 Sometimes you need to be able to write conditional expressions based on site-specific data that just isn't available via Facter, or perhaps you'd like to include it in a template.
 
-Because you can't include arbitrary Ruby code in your manifests, the best solution is to add a new fact to Facter. These additional facts can then be distributed to Puppet clients and are available for use in manifests and templates, just like any other fact is.
+Because you can't include arbitrary Ruby code in your manifests, the best solution is to add a new fact to Facter. These additional facts can then be distributed to Puppet clients and are available for use in manifests and templates, just like any other fact is. 
 
 > **Note:** Facter 3.0 removed the Ruby implementations of some features and replaced them with a [custom facts API](https://github.com/puppetlabs/facter/blob/master/Extensibility.md#custom-facts-compatibility). Any custom fact that requires one of the Ruby files previously stored in `lib/facter/util` fails with an error. For more information, see the [Facter 3.0 release notes](../3.0/release_notes.html).
 
